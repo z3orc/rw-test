@@ -1,0 +1,23 @@
+{
+    "name": "rainway-ender-fetch",
+    "version": "1.0.0",
+    "main": "src/index.js",
+    "author": "z3orc",
+    "license": "MIT",
+    "scripts": {
+        "start": "node src/index.js",
+        "dev": "nodemon src/index.js"
+    },
+    "dependencies": {
+        "express": "^4.18.1",
+        "express-validator": "^6.14.2",
+        "helmet": "^5.1.0",
+        "morgan": "^1.10.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.19"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    }
+}
