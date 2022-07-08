@@ -25,13 +25,12 @@ app.get(
     async (req, res) => {
         const errors = validationResult(req);
         // const client = createClient();
-        var client;
         if (!errors.isEmpty()) {
             return res.status(400).send("🔴 Bad Request");
         }
 
         const dbConnect = async () => {
-            client = createClient({ url: process.env.DATABASE_URL });
+            const client = createClient({ url: process.env.DATABASE_URL });
             const state = await client
                 .connect()
                 .then(() => {
@@ -44,10 +43,11 @@ app.get(
                     client.discard();
                     return false;
                 });
-            return state;
+            return { state: state, client: client };
         };
 
-        const dbState = await dbConnect();
+        const dbState = (await dbConnect()).state;
+        const client = (await dbConnect()).client;
 
         if (dbState == true) {
             var params = req.params;
